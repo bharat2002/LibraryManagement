@@ -45,19 +45,21 @@ public class BookCopy {
            return info;
        }
 
-       public void setInfo(BookMetaInfo info) {
+       public BookCopyBuilder setInfo(BookMetaInfo info) {
            this.info = info;
+           return this;
        }
 
        public BookStatus getStatus() {
            return status;
        }
 
-       public void setStatus(BookStatus status) {
+       public BookCopyBuilder setStatus(BookStatus status) {
            this.status = status;
+           return this;
        }
 
-       BookCopy CreateBook()
+       public BookCopy CreateBook()
        {
            if(info == null)
            {

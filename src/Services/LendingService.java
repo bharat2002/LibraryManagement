@@ -9,6 +9,7 @@ import Models.BookCopy;
 import Models.BorrowingRecord;
 import Models.Patron;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
@@ -68,7 +69,7 @@ public class LendingService implements ILendingService {
             return null;
         }
 
-        BookCopy copy = inventoryService.findCopyById(Integer.getInteger(copyId));
+        BookCopy copy = inventoryService.findCopyById(Integer.parseInt(copyId));
         if (copy == null) {
             System.out.println("Invalid copy ID");
             return null;
@@ -85,8 +86,13 @@ public class LendingService implements ILendingService {
     }
 
     @Override
-    public List<BorrowingRecord> getHistory(String patronId) {
-
-        return List.of();
+    public List<BorrowingRecord> GetActiveBorrowing(String patronId) {
+       Patron patron = this.patronService.findPatronById(patronId);
+       if(null != patron)
+       {
+           return new ArrayList<>(patron.getBorrowingRecords().values());
+       }
+       return null;
     }
+
 }

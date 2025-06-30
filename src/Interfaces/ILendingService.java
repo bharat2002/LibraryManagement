@@ -10,5 +10,5 @@ public interface ILendingService {
     BorrowingRecord checkoutBook(String patronId, Integer copyId);
     BorrowingRecord checkoutBook(Patron patron, BookCopy copy);
     BorrowingRecord returnBook(String patronId, String copyId);
-    List<BorrowingRecord> getHistory(String patronId);
+    List<BorrowingRecord> GetActiveBorrowing(String patronId);
 }

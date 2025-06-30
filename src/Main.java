@@ -1,15 +1,33 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import Enums.PatronType;
+import Models.BookCopy;
+import Models.BorrowingRecord;
+import Services.Library;
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        Library library = new Library();
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+        // Register a patron
+        library.registerPatron("P001", "Alice", PatronType.STUDENT, "alice@example.com", "1234567890");
+
+        // Add a book
+        library.addBook("978-0134685991", "Effective Java", "Joshua Bloch", (short) 2018, 2);
+
+        // Checkout a book
+        BookCopy copy = library.getInventoryService().findCopyById(1);
+        BorrowingRecord record = library.getLendingService().checkoutBook("P001", copy.getCopyId());
+        if (record != null) {
+            System.out.println("Book checked out successfully: " + record);
+        } else {
+            System.out.println("Checkout failed.");
         }
+
+        // Return a book
+        library.getLendingService().GetActiveBorrowing("P001").forEach(System.out::println);
+        library.getLendingService().returnBook("P001", String.valueOf(copy.getCopyId()));
+
+        // Display borrowing history
+        System.out.println("Borrowing history:");
+        library.getLendingService().GetActiveBorrowing("P001").forEach(System.out::println);
     }
 }

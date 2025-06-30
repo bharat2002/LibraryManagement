@@ -4,11 +4,16 @@ import Interfaces.IPatronService;
 import Models.BorrowingRecord;
 import Models.Patron;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class PatronService implements IPatronService {
     Map<String, Patron> patronMap;
+
+    public PatronService() {
+        this.patronMap = new HashMap<>();
+    }
 
     @Override
     public Patron registerPatron(Patron patron) {
