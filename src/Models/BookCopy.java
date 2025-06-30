@@ -2,11 +2,10 @@ package Models;
 
 import Enums.BookStatus;
 
-import java.awt.print.Book;
 
 public class BookCopy {
     BookMetaInfo info;
-    private Integer copyId;
+    private final Integer copyId;
     private BookStatus status;
 
     public int getCopyId() {
