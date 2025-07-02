@@ -63,15 +63,6 @@ library.addBook("Effective Java", "Joshua Bloch", "ISBN1234", 2008, 3);
 library.registerPatron(...);  
 library.checkoutBook(...);
 
-## Submission Instructions
-
-- Make sure the repository is public
-- Submit a Pull Request (PR) with:
-    - All source code
-    - This README file
-    - UML class diagram image (`class-diagram.png`)
-- Ensure your code is structured and documented
-
 ## License
 
 This project is licensed under the MIT License.
